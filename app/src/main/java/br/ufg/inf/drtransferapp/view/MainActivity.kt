@@ -5,18 +5,24 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import br.ufg.inf.drtransferapp.R
-import br.ufg.inf.drtransferapp.api.RetrofitClient
-import br.ufg.inf.drtransferapp.model.PatientRequestModel
 import br.ufg.inf.drtransferapp.model.PatientResponseModel
-import br.ufg.inf.drtransferapp.repository.PatientRepositoryImpl
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import br.ufg.inf.drtransferapp.usecase.PatientStates
+import br.ufg.inf.drtransferapp.viewmodel.PatientFactory
+import br.ufg.inf.drtransferapp.viewmodel.PatientInterpreter
+import br.ufg.inf.drtransferapp.viewmodel.PatientVM
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var res : PatientResponseModel
+    private lateinit var res: List<PatientResponseModel>
+
+    private val viewModel: PatientVM by lazy {
+        ViewModelProvider(this, PatientFactory()).get(
+            PatientVM::class.java
+        )
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,18 +33,19 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val service = RetrofitClient().createService()
-        val repository = PatientRepositoryImpl(service)
-        CoroutineScope(Dispatchers.IO).launch {
-            repository.callCreatePatient(PatientRequestModel(
-                nome = "Sergio Cria Teste Paciente",
-                cpf = "12345678910",
-                telefone = "77777777",
-                genero = "MALE",
-                tipoSanguineo = "A_NEGATIVE",
-                dataNascimento = "2024-09-26T00:00:00.000Z"
+        viewModel.interpret(PatientInterpreter.CallListPatientsApi)
 
-            ))
+        initObserver()
+    }
+
+    private fun initObserver() {
+        viewModel.patient.observe(this) {
+            when (it) {
+                is PatientStates.OnSuccessListPatients -> {
+                    res = it.patients
+                }
+                else -> {}
+            }
         }
     }
 }
