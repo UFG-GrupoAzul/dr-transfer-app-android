@@ -28,6 +28,6 @@ interface PatientApiServices {
     @DELETE("patients/{id}")
     suspend fun deletePatient(
         @Path("id") idPatient: String // @Path é usado para mapear o parâmetro idPatient para o path da requisição HTTP, neste caso, o path da requisição HTTP será o id do paciente no qual o valor do id será substituído pelo valor do parâmetro idPatient
-    ): retrofit2.Response<Response> // Response é o tipo de resposta que queremos receber da nossa API, como o métoddo delete não retorna nada, então a resposta será do tipo Response para a gente pegar o status da requisição se foi com sucesso ou com falha
+    ): retrofit2.Response<Any>// Response é o tipo de resposta que queremos receber da nossa API, como o métoddo delete não retorna nada, então a resposta será do tipo Response para a gente pegar o status da requisição se foi com sucesso ou com falha
 
 }

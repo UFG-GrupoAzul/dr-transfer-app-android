@@ -18,5 +18,5 @@ interface PatientRepository {
         patient: PatientRequestModel
     ): Result<PatientResponseModel>
 
-    suspend fun callDeletePatient(idPatient: String): Result<Boolean>
+    suspend fun callDeletePatient(idPatient: String): Result<Any>
 }
