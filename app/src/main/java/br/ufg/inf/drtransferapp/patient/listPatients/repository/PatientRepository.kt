@@ -9,10 +9,5 @@ interface PatientRepository {
     */
     suspend fun callAllPatients(): Result<List<PatientResponseModel>>
 
-    suspend fun callUpdatePatient(
-        idPatient: String,
-        patient: PatientRequestModel
-    ): Result<PatientResponseModel>
-
     suspend fun callDeletePatient(idPatient: String): Result<Boolean>
 }

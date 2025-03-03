@@ -21,9 +21,6 @@ class PatientVM(private val useCase: PatientUseCase) : ViewModel() {
             is PatientInterpreter.CallListPatientsApi ->
                 callUseCaseListAllPatients()
 
-            is PatientInterpreter.CallUpdatePatientApi ->
-                callUseCaseUpdatePatient(interpreter.idPatient, interpreter.patient)
-
             is PatientInterpreter.CallDeletePatientApi ->
                 callUseCaseDeletePatient(interpreter.idPatient)
         }
@@ -32,12 +29,6 @@ class PatientVM(private val useCase: PatientUseCase) : ViewModel() {
     private fun callUseCaseListAllPatients() {
         CoroutineScope(Dispatchers.IO).launch {
             _patient.postValue(useCase.listAllPatients())
-        }
-    }
-
-    private fun callUseCaseUpdatePatient(idPatient: String, patient: PatientRequestModel) {
-        CoroutineScope(Dispatchers.IO).launch {
-            _patient.postValue(useCase.updatePatient(idPatient, patient))
         }
     }
 

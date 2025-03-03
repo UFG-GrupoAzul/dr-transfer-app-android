@@ -20,23 +20,6 @@ class PatientUseCaseImpl(private val repository: PatientRepository): PatientUseC
         }
     }
 
-    override suspend fun updatePatient(
-        idPatient: String,
-        patient: PatientRequestModel
-    ): PatientStates {
-        val result = repository.callUpdatePatient(idPatient, patient)
-
-        return if (result.isSuccess) {
-            result.getOrNull()?.let {
-                PatientStates.OnSuccessPatient(it)
-            }.orElse {
-                PatientStates.OnError(result.exceptionOrNull() ?: Throwable("Erro desconhecido"))
-            }
-        } else {
-            PatientStates.OnError(result.exceptionOrNull() ?: Throwable("Erro desconhecido"))
-        }
-    }
-
     override suspend fun deletePatient(idPatient: String): PatientStates {
         val result = repository.callDeletePatient(idPatient)
 

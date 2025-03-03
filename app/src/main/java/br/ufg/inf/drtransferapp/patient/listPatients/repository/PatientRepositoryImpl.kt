@@ -15,22 +15,6 @@ class PatientRepositoryImpl(private val apiServices: PatientApiServices) : Patie
         }
     }
 
-    override suspend fun callUpdatePatient(
-        idPatient: String,
-        patient: PatientRequestModel
-    ): Result<PatientResponseModel> {
-        return try {
-            val response = apiServices.updatePatient(idPatient, patient)
-            response.body()?.let {
-                Result.success(it)
-            }.orElse {
-                Result.failure(Throwable("Falha ao atualizar paciente"))
-            }
-        } catch (exception: Throwable) {
-            Result.failure(exception)
-        }
-    }
-
     override suspend fun callDeletePatient(idPatient: String): Result<Boolean> {
         return try {
             val result: Result<Boolean>
