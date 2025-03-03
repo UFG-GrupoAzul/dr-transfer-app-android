@@ -2,7 +2,7 @@ package br.ufg.inf.drtransferapp.home.usecase
 
 import br.ufg.inf.drtransferapp.home.model.PatientRequestModel
 import br.ufg.inf.drtransferapp.home.repository.PatientRepository
-import br.ufg.inf.drtransferapp.home.utils.extension.orElse
+import br.ufg.inf.drtransferapp.utils.extension.orElse
 import br.ufg.inf.drtransferapp.home.viewmodel.PatientStates
 
 class PatientUseCaseImpl(private val repository: PatientRepository): PatientUseCase {

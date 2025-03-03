@@ -15,6 +15,9 @@ class PatientVM(private val useCase: PatientUseCase) : ViewModel() {
 
     fun interpret(interpreter: PatientInterpreter) {
         when (interpreter) {
+            is PatientInterpreter.CallLoading ->
+                _patient.postValue(PatientStates.OnLoading)
+
             is PatientInterpreter.CallListPatientsApi ->
                 callUseCaseListAllPatients()
 

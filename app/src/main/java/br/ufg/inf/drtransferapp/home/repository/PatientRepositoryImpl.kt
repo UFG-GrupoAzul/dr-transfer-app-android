@@ -3,7 +3,7 @@ package br.ufg.inf.drtransferapp.home.repository
 import br.ufg.inf.drtransferapp.home.api.PatientApiServices
 import br.ufg.inf.drtransferapp.home.model.PatientRequestModel
 import br.ufg.inf.drtransferapp.home.model.PatientResponseModel
-import br.ufg.inf.drtransferapp.home.utils.extension.orElse
+import br.ufg.inf.drtransferapp.utils.extension.orElse
 
 class PatientRepositoryImpl(private val apiServices: PatientApiServices) : PatientRepository {
     override suspend fun callAllPatients(): Result<List<PatientResponseModel>> {
