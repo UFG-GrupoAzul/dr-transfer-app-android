@@ -2,35 +2,65 @@ package br.ufg.inf.drtransferapp.home.usecase
 
 import br.ufg.inf.drtransferapp.home.model.PatientRequestModel
 import br.ufg.inf.drtransferapp.home.repository.PatientRepository
+import br.ufg.inf.drtransferapp.home.utils.extension.orElse
 
 class PatientUseCaseImpl(private val repository: PatientRepository): PatientUseCase {
     override suspend fun listAllPatients(): PatientStates {
         val result = repository.callAllPatients()
 
         return if (result.isSuccess) {
-            PatientStates.OnSuccessListPatients(
-                result.getOrNull() ?: run {
-                    emptyList()
-                }
-            )
+            result.getOrNull()?.let {
+                PatientStates.OnSuccessListPatients(it)
+            }.orElse {
+                PatientStates.OnError(result.exceptionOrNull() ?: Throwable("Erro desconhecido"))
+            }
         } else {
             PatientStates.OnError(result.exceptionOrNull() ?: Throwable("Erro desconhecido"))
         }
     }
 
     override suspend fun createPatient(patient: PatientRequestModel): PatientStates {
-        TODO("Not yet implemented")
+        val result = repository.callCreatePatient(patient)
+
+        return if (result.isSuccess) {
+            result.getOrNull()?.let {
+                PatientStates.OnSuccessPatient(it)
+            }.orElse {
+                PatientStates.OnError(result.exceptionOrNull() ?: Throwable("Erro desconhecido"))
+            }
+        } else {
+            PatientStates.OnError(result.exceptionOrNull() ?: Throwable("Erro desconhecido"))
+        }
     }
 
     override suspend fun updatePatient(
         idPatient: String,
         patient: PatientRequestModel
     ): PatientStates {
-        TODO("Not yet implemented")
+        val result = repository.callUpdatePatient(idPatient, patient)
+
+        return if (result.isSuccess) {
+            result.getOrNull()?.let {
+                PatientStates.OnSuccessPatient(it)
+            }.orElse {
+                PatientStates.OnError(result.exceptionOrNull() ?: Throwable("Erro desconhecido"))
+            }
+        } else {
+            PatientStates.OnError(result.exceptionOrNull() ?: Throwable("Erro desconhecido"))
+        }
     }
 
     override suspend fun deletePatient(idPatient: String): PatientStates {
-        TODO("Not yet implemented")
-    }
+        val result = repository.callDeletePatient(idPatient)
 
+        return if (result.isSuccess) {
+            result.getOrNull()?.let {
+                PatientStates.OnSuccessDeletePatient(it)
+            }.orElse {
+                PatientStates.OnError(result.exceptionOrNull() ?: Throwable("Erro desconhecido"))
+            }
+        } else {
+            PatientStates.OnError(result.exceptionOrNull() ?: Throwable("Erro desconhecido"))
+        }
+    }
 }

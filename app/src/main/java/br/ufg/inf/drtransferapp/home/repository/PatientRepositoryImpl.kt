@@ -44,7 +44,7 @@ class PatientRepositoryImpl(private val apiServices: PatientApiServices) : Patie
         }
     }
 
-    override suspend fun callDeletePatient(idPatient: String): Result<Any> {
+    override suspend fun callDeletePatient(idPatient: String): Result<Boolean> {
         return try {
             apiServices.deletePatient(idPatient)
             Result.success(true)
