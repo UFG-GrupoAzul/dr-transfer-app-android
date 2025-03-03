@@ -136,7 +136,7 @@
         android:layout_marginEnd="24dp"
         android:src="@drawable/ic_deletar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_idade_conteudo" />
+        app:layout_constraintTop_toTopOf="@id/tv_telefone_conteudo" />
 
     <View
         android:id="@+id/view_bar_divider"
