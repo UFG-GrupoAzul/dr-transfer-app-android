@@ -1,52 +1,58 @@
 package br.ufg.inf.drtransferapp.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import br.ufg.inf.drtransferapp.api.ApiListener
 import br.ufg.inf.drtransferapp.api.PatientApiServices
-import br.ufg.inf.drtransferapp.api.makeRequest
 import br.ufg.inf.drtransferapp.model.PatientRequestModel
 import br.ufg.inf.drtransferapp.model.PatientResponseModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import br.ufg.inf.drtransferapp.utils.extension.orElse
 
 class PatientRepositoryImpl(private val apiServices: PatientApiServices) : PatientRepository {
-    override fun callAllPatients(): LiveData<List<PatientResponseModel>> {
-        val livedData = MutableLiveData<List<PatientResponseModel>>()
-        val call = apiServices.getAllPatients()
-        call.enqueue(object : Callback<List<PatientResponseModel>> {
-            override fun onResponse(
-                call: Call<List<PatientResponseModel>>,
-                response: Response<List<PatientResponseModel>>
-            ) {
-                livedData.postValue(response.body())
+    override suspend fun callAllPatients(): Result<List<PatientResponseModel>> {
+        val response = apiServices.getAllPatients()
+
+        return if (response.isSuccessful) {
+            Result.success(response.body() ?: emptyList())
+        } else {
+            Result.failure(Throwable("Erro na requisição"))
+        }
+    }
+
+
+    override suspend fun callCreatePatient(patient: PatientRequestModel): Result<PatientResponseModel> {
+        val response = apiServices.createPatient(patient)
+
+        return if (response.isSuccessful) {
+            response.body()?.let {
+                Result.success(it)
+            }.orElse {
+                Result.failure(Throwable("Falha ao criar paciente"))
             }
+        } else {
+            Result.failure(Throwable("Erro na requisição"))
+        }
+    }
 
-            override fun onFailure(call: Call<List<PatientResponseModel>>, t: Throwable) {
-                TODO("Not yet implemented")
+    override suspend fun callUpdatePatient(idPatient: String, patient: PatientRequestModel) : Result<PatientResponseModel> {
+        val response = apiServices.updatePatient(idPatient, patient)
+
+        return if (response.isSuccessful) {
+            response.body()?.let {
+                Result.success(it)
+            }.orElse {
+                Result.failure(Throwable("Falha ao atualizar paciente"))
             }
-
-        })
-        return livedData
+        } else {
+            Result.failure(Throwable("Erro na requisição"))
+        }
     }
 
+    override suspend fun callDeletePatient(idPatient: String) : Result<Boolean> {
+        val response = apiServices.deletePatient(idPatient)
 
+        return if (response.isSuccessful) {
+            Result.success(true)
+        } else {
+            Result.failure(Throwable("Erro na requisição"))
 
-    override fun callCreatePatient(patient: PatientRequestModel) {
-        TODO("Not yet implemented")
+        }
     }
-
-    override fun callUpdatePatient(idPatient: String, patient: PatientRequestModel) {
-        TODO("Not yet implemented")
-    }
-
-    override fun callDeletePatient(idPatient: String) {
-        TODO("Not yet implemented")
-    }
-
-
 }
