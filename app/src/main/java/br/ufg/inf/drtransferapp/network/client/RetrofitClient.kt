@@ -1,5 +1,6 @@
-package br.ufg.inf.drtransferapp.patient.listPatients.api
+package br.ufg.inf.drtransferapp.network.client
 
+import br.ufg.inf.drtransferapp.network.service.PatientApiServices
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

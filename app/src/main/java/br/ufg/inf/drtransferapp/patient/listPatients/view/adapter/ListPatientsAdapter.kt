@@ -7,8 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.ufg.inf.drtransferapp.R
-import br.ufg.inf.drtransferapp.patient.listPatients.model.PatientResponseModel
-import br.ufg.inf.drtransferapp.utils.extension.calculateAgeFromISODate
+import br.ufg.inf.drtransferapp.patient.commons.model.PatientResponseModel
+import br.ufg.inf.drtransferapp.patient.commons.utils.extension.calculateAgeFromISODate
 
 class ListPatientsAdapter(
     private val onClickEdit: (PatientResponseModel) -> Unit,

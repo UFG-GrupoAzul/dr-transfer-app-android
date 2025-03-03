@@ -1,8 +1,8 @@
 package br.ufg.inf.drtransferapp.patient.listPatients.usecase
 
-import br.ufg.inf.drtransferapp.patient.listPatients.model.PatientRequestModel
+import br.ufg.inf.drtransferapp.patient.commons.model.PatientRequestModel
 import br.ufg.inf.drtransferapp.patient.listPatients.repository.PatientRepository
-import br.ufg.inf.drtransferapp.utils.extension.orElse
+import br.ufg.inf.drtransferapp.patient.commons.utils.extension.orElse
 import br.ufg.inf.drtransferapp.patient.listPatients.viewmodel.PatientStates
 
 class PatientUseCaseImpl(private val repository: PatientRepository): PatientUseCase {
@@ -12,20 +12,6 @@ class PatientUseCaseImpl(private val repository: PatientRepository): PatientUseC
         return if (result.isSuccess) {
             result.getOrNull()?.let {
                 PatientStates.OnSuccessListPatients(it)
-            }.orElse {
-                PatientStates.OnError(result.exceptionOrNull() ?: Throwable("Erro desconhecido"))
-            }
-        } else {
-            PatientStates.OnError(result.exceptionOrNull() ?: Throwable("Erro desconhecido"))
-        }
-    }
-
-    override suspend fun createPatient(patient: PatientRequestModel): PatientStates {
-        val result = repository.callCreatePatient(patient)
-
-        return if (result.isSuccess) {
-            result.getOrNull()?.let {
-                PatientStates.OnSuccessPatient(it)
             }.orElse {
                 PatientStates.OnError(result.exceptionOrNull() ?: Throwable("Erro desconhecido"))
             }

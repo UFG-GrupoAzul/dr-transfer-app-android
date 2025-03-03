@@ -1,28 +1,15 @@
 package br.ufg.inf.drtransferapp.patient.listPatients.repository
 
-import br.ufg.inf.drtransferapp.patient.listPatients.api.PatientApiServices
-import br.ufg.inf.drtransferapp.patient.listPatients.model.PatientRequestModel
-import br.ufg.inf.drtransferapp.patient.listPatients.model.PatientResponseModel
-import br.ufg.inf.drtransferapp.utils.extension.orElse
+import br.ufg.inf.drtransferapp.network.service.PatientApiServices
+import br.ufg.inf.drtransferapp.patient.commons.model.PatientRequestModel
+import br.ufg.inf.drtransferapp.patient.commons.model.PatientResponseModel
+import br.ufg.inf.drtransferapp.patient.commons.utils.extension.orElse
 
 class PatientRepositoryImpl(private val apiServices: PatientApiServices) : PatientRepository {
     override suspend fun callAllPatients(): Result<List<PatientResponseModel>> {
         return try {
             val response = apiServices.getAllPatients()
             Result.success(response.body() ?: emptyList())
-        } catch (exception: Throwable) {
-            Result.failure(exception)
-        }
-    }
-
-    override suspend fun callCreatePatient(patient: PatientRequestModel): Result<PatientResponseModel> {
-        return try {
-            val response = apiServices.createPatient(patient)
-            response.body()?.let {
-                Result.success(it)
-            }.orElse {
-                Result.failure(Throwable("Falha ao criar paciente"))
-            }
         } catch (exception: Throwable) {
             Result.failure(exception)
         }

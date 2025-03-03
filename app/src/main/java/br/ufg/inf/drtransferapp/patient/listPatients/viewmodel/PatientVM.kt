@@ -3,7 +3,7 @@ package br.ufg.inf.drtransferapp.patient.listPatients.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import br.ufg.inf.drtransferapp.patient.listPatients.model.PatientRequestModel
+import br.ufg.inf.drtransferapp.patient.commons.model.PatientRequestModel
 import br.ufg.inf.drtransferapp.patient.listPatients.usecase.PatientUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,9 +21,6 @@ class PatientVM(private val useCase: PatientUseCase) : ViewModel() {
             is PatientInterpreter.CallListPatientsApi ->
                 callUseCaseListAllPatients()
 
-            is PatientInterpreter.CallCreatePatientApi ->
-                callUseCaseCreatePatient(interpreter.patient)
-
             is PatientInterpreter.CallUpdatePatientApi ->
                 callUseCaseUpdatePatient(interpreter.idPatient, interpreter.patient)
 
@@ -35,12 +32,6 @@ class PatientVM(private val useCase: PatientUseCase) : ViewModel() {
     private fun callUseCaseListAllPatients() {
         CoroutineScope(Dispatchers.IO).launch {
             _patient.postValue(useCase.listAllPatients())
-        }
-    }
-
-    private fun callUseCaseCreatePatient(patient: PatientRequestModel) {
-        CoroutineScope(Dispatchers.IO).launch {
-            _patient.postValue(useCase.createPatient(patient))
         }
     }
 

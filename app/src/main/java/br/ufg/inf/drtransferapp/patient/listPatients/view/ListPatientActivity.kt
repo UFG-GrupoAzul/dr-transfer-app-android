@@ -1,5 +1,6 @@
 package br.ufg.inf.drtransferapp.patient.listPatients.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -10,12 +11,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.ufg.inf.drtransferapp.R
 import br.ufg.inf.drtransferapp.databinding.ActivityHomeBinding
-import br.ufg.inf.drtransferapp.patient.listPatients.model.PatientResponseModel
+import br.ufg.inf.drtransferapp.patient.commons.model.PatientResponseModel
 import br.ufg.inf.drtransferapp.patient.listPatients.view.adapter.ListPatientsAdapter
 import br.ufg.inf.drtransferapp.patient.listPatients.viewmodel.PatientStates
 import br.ufg.inf.drtransferapp.patient.listPatients.viewmodel.PatientFactory
 import br.ufg.inf.drtransferapp.patient.listPatients.viewmodel.PatientInterpreter
 import br.ufg.inf.drtransferapp.patient.listPatients.viewmodel.PatientVM
+import br.ufg.inf.drtransferapp.patient.registerNewPatient.view.RegisterNewPatientActivity
 
 class ListPatientActivity : AppCompatActivity() {
 
@@ -53,6 +55,7 @@ class ListPatientActivity : AppCompatActivity() {
         viewModel.interpret(PatientInterpreter.CallLoading)
 
         initRecyclerView()
+        setClickListener()
         initObserver()
     }
 
@@ -88,6 +91,12 @@ class ListPatientActivity : AppCompatActivity() {
 
     private fun hideShimmer(){
         // TODO: ocultar a animação do shimmer
+    }
+
+    private fun setClickListener() {
+        binding.fabAddPatient.setOnClickListener {
+            startActivity(Intent(this, RegisterNewPatientActivity::class.java))
+        }
     }
 
     private fun initRecyclerView() {

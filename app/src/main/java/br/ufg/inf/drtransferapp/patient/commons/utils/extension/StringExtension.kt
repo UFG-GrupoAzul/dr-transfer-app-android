@@ -1,4 +1,4 @@
-package br.ufg.inf.drtransferapp.utils.extension
+package br.ufg.inf.drtransferapp.patient.commons.utils.extension
 
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter

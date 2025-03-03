@@ -1,4 +1,4 @@
-package br.ufg.inf.drtransferapp.patient.listPatients.model
+package br.ufg.inf.drtransferapp.patient.commons.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 data class PatientRequestModel(
     @SerializedName("name") val nome: String, // o @SerializedName é usado para mapear o nome do campo da API com o nome do campo da classe
     @SerializedName("cpf") val cpf: String,
-    @SerializedName("phone") var telefone: String,
+    @SerializedName("phone") val telefone: String,
     @SerializedName("gender") val genero: String,
     @SerializedName("birthDate") val dataNascimento: String,
     @SerializedName("bloodType") val tipoSanguineo: String

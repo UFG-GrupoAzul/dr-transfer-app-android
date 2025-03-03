@@ -2,7 +2,7 @@ package br.ufg.inf.drtransferapp.patient.listPatients.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import br.ufg.inf.drtransferapp.patient.listPatients.api.RetrofitClient
+import br.ufg.inf.drtransferapp.network.client.RetrofitClient
 import br.ufg.inf.drtransferapp.patient.listPatients.repository.PatientRepositoryImpl
 import br.ufg.inf.drtransferapp.patient.listPatients.usecase.PatientUseCaseImpl
 

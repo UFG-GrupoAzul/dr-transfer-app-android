@@ -1,7 +1,7 @@
-package br.ufg.inf.drtransferapp.patient.listPatients.api
+package br.ufg.inf.drtransferapp.network.service
 
-import br.ufg.inf.drtransferapp.patient.listPatients.model.PatientRequestModel
-import br.ufg.inf.drtransferapp.patient.listPatients.model.PatientResponseModel
+import br.ufg.inf.drtransferapp.patient.commons.model.PatientRequestModel
+import br.ufg.inf.drtransferapp.patient.commons.model.PatientResponseModel
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
