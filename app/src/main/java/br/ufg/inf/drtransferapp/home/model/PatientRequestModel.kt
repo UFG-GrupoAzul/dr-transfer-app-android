@@ -1,4 +1,4 @@
-package br.ufg.inf.drtransferapp.model
+package br.ufg.inf.drtransferapp.home.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

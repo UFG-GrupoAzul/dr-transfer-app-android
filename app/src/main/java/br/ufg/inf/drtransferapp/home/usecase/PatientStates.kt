@@ -1,6 +1,6 @@
-package br.ufg.inf.drtransferapp.usecase
+package br.ufg.inf.drtransferapp.home.usecase
 
-import br.ufg.inf.drtransferapp.model.PatientResponseModel
+import br.ufg.inf.drtransferapp.home.model.PatientResponseModel
 
 sealed class PatientStates {
     object OnLoading : PatientStates()

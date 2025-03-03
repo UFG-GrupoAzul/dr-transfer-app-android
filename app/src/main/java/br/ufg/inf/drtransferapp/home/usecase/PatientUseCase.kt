@@ -1,7 +1,7 @@
-package br.ufg.inf.drtransferapp.usecase
+package br.ufg.inf.drtransferapp.home.usecase
 
-import br.ufg.inf.drtransferapp.model.PatientRequestModel
-import br.ufg.inf.drtransferapp.repository.PatientRepository
+import br.ufg.inf.drtransferapp.home.model.PatientRequestModel
+import br.ufg.inf.drtransferapp.home.repository.PatientRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

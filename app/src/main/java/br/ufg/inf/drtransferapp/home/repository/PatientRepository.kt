@@ -1,8 +1,8 @@
-package br.ufg.inf.drtransferapp.repository
+package br.ufg.inf.drtransferapp.home.repository
 
 import androidx.lifecycle.LiveData
-import br.ufg.inf.drtransferapp.model.PatientRequestModel
-import br.ufg.inf.drtransferapp.model.PatientResponseModel
+import br.ufg.inf.drtransferapp.home.model.PatientRequestModel
+import br.ufg.inf.drtransferapp.home.model.PatientResponseModel
 import okhttp3.Response
 
 interface PatientRepository {

@@ -1,7 +1,7 @@
-package br.ufg.inf.drtransferapp.api
+package br.ufg.inf.drtransferapp.home.api
 
-import br.ufg.inf.drtransferapp.model.PatientRequestModel
-import br.ufg.inf.drtransferapp.model.PatientResponseModel
+import br.ufg.inf.drtransferapp.home.model.PatientRequestModel
+import br.ufg.inf.drtransferapp.home.model.PatientResponseModel
 import okhttp3.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE

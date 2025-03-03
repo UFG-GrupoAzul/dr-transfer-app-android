@@ -1,4 +1,4 @@
-package br.ufg.inf.drtransferapp.api
+package br.ufg.inf.drtransferapp.home.api
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -18,7 +18,7 @@ class RetrofitClient {
         /* Neste métoddo a gente configura nossa instância do Retrofit e retornamos ela. */
         private fun getRetrofitInstance(): Retrofit {
             val http = OkHttpClient.Builder() // aqui nos configuramos um cliente HTTP para interagir com a API
-            if (!::INSTANCE.isInitialized) { // aqui nos certificamos que a instância não foi inicializada
+            if (!Companion::INSTANCE.isInitialized) { // aqui nos certificamos que a instância não foi inicializada
                 synchronized(RetrofitClient::class.java) {
                     INSTANCE = Retrofit.Builder() // e aqui nos construímos a instância do Retrofit
                         .baseUrl(BASE_URL) // onde aqui informamos a URL base da API
