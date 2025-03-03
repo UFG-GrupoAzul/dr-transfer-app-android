@@ -8,7 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import br.ufg.inf.drtransferapp.R
 import br.ufg.inf.drtransferapp.home.model.PatientResponseModel
-import br.ufg.inf.drtransferapp.home.usecase.PatientStates
+import br.ufg.inf.drtransferapp.home.viewmodel.PatientStates
 import br.ufg.inf.drtransferapp.home.viewmodel.PatientFactory
 import br.ufg.inf.drtransferapp.home.viewmodel.PatientInterpreter
 import br.ufg.inf.drtransferapp.home.viewmodel.PatientVM
