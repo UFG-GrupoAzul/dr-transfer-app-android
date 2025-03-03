@@ -1,4 +1,4 @@
-package br.ufg.inf.drtransferapp.listPatients.view.adapter
+package br.ufg.inf.drtransferapp.patient.listPatients.view.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.ufg.inf.drtransferapp.R
-import br.ufg.inf.drtransferapp.listPatients.model.PatientResponseModel
+import br.ufg.inf.drtransferapp.patient.listPatients.model.PatientResponseModel
 import br.ufg.inf.drtransferapp.utils.extension.calculateAgeFromISODate
 
 class ListPatientsAdapter(
@@ -20,10 +20,12 @@ class ListPatientsAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ListPatientsAdapter.ViewHolder {
+    ): ViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_patient, parent, false)
-        return ViewHolder(itemView)
+        return ViewHolder(
+            itemView
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

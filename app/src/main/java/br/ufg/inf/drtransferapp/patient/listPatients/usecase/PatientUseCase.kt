@@ -1,7 +1,7 @@
-package br.ufg.inf.drtransferapp.listPatients.usecase
+package br.ufg.inf.drtransferapp.patient.listPatients.usecase
 
-import br.ufg.inf.drtransferapp.listPatients.model.PatientRequestModel
-import br.ufg.inf.drtransferapp.listPatients.viewmodel.PatientStates
+import br.ufg.inf.drtransferapp.patient.listPatients.model.PatientRequestModel
+import br.ufg.inf.drtransferapp.patient.listPatients.viewmodel.PatientStates
 
 interface PatientUseCase {
     suspend fun listAllPatients() : PatientStates

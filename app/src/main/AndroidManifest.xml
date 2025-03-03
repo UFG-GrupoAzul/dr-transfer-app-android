@@ -16,7 +16,7 @@
         android:theme="@style/Theme.DrTransferApp"
         tools:targetApi="31">
         <activity
-            android:name=".listPatients.view.ListPatientActivity"
+            android:name=".patient.listPatients.view.ListPatientActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

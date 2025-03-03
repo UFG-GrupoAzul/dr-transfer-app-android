@@ -1,4 +1,4 @@
-package br.ufg.inf.drtransferapp.listPatients.model
+package br.ufg.inf.drtransferapp.patient.listPatients.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

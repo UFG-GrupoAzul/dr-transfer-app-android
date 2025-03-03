@@ -1,10 +1,10 @@
-package br.ufg.inf.drtransferapp.listPatients.viewmodel
+package br.ufg.inf.drtransferapp.patient.listPatients.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import br.ufg.inf.drtransferapp.listPatients.model.PatientRequestModel
-import br.ufg.inf.drtransferapp.listPatients.usecase.PatientUseCase
+import br.ufg.inf.drtransferapp.patient.listPatients.model.PatientRequestModel
+import br.ufg.inf.drtransferapp.patient.listPatients.usecase.PatientUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

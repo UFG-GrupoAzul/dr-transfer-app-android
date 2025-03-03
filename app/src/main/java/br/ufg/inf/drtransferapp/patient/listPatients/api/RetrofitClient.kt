@@ -1,4 +1,4 @@
-package br.ufg.inf.drtransferapp.listPatients.api
+package br.ufg.inf.drtransferapp.patient.listPatients.api
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

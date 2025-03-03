@@ -1,6 +1,6 @@
-package br.ufg.inf.drtransferapp.listPatients.viewmodel
+package br.ufg.inf.drtransferapp.patient.listPatients.viewmodel
 
-import br.ufg.inf.drtransferapp.listPatients.model.PatientResponseModel
+import br.ufg.inf.drtransferapp.patient.listPatients.model.PatientResponseModel
 
 sealed class PatientStates {
     object OnLoading : PatientStates()

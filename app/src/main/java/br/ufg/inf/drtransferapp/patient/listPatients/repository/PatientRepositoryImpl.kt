@@ -1,8 +1,8 @@
-package br.ufg.inf.drtransferapp.listPatients.repository
+package br.ufg.inf.drtransferapp.patient.listPatients.repository
 
-import br.ufg.inf.drtransferapp.listPatients.api.PatientApiServices
-import br.ufg.inf.drtransferapp.listPatients.model.PatientRequestModel
-import br.ufg.inf.drtransferapp.listPatients.model.PatientResponseModel
+import br.ufg.inf.drtransferapp.patient.listPatients.api.PatientApiServices
+import br.ufg.inf.drtransferapp.patient.listPatients.model.PatientRequestModel
+import br.ufg.inf.drtransferapp.patient.listPatients.model.PatientResponseModel
 import br.ufg.inf.drtransferapp.utils.extension.orElse
 
 class PatientRepositoryImpl(private val apiServices: PatientApiServices) : PatientRepository {
@@ -46,8 +46,16 @@ class PatientRepositoryImpl(private val apiServices: PatientApiServices) : Patie
 
     override suspend fun callDeletePatient(idPatient: String): Result<Boolean> {
         return try {
-            apiServices.deletePatient(idPatient)
-            Result.success(true)
+            val result: Result<Boolean>
+            val response = apiServices.deletePatient(idPatient)
+            result = if (response.code() != 200 && response.code() != 201) {
+                Result.success(false)
+            } else if (response.code() == 200 || response.code() == 201){
+                Result.success(true)
+            } else {
+                Result.success(false)
+            }
+            result
         } catch (exception: Throwable) {
             Result.failure(exception)
         }

@@ -1,7 +1,7 @@
-package br.ufg.inf.drtransferapp.listPatients.repository
+package br.ufg.inf.drtransferapp.patient.listPatients.repository
 
-import br.ufg.inf.drtransferapp.listPatients.model.PatientRequestModel
-import br.ufg.inf.drtransferapp.listPatients.model.PatientResponseModel
+import br.ufg.inf.drtransferapp.patient.listPatients.model.PatientRequestModel
+import br.ufg.inf.drtransferapp.patient.listPatients.model.PatientResponseModel
 
 interface PatientRepository {
     /*Aqui estão todos os métoddos que serão implementados na classe PatientRepositoryImpl.

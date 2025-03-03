@@ -1,4 +1,4 @@
-package br.ufg.inf.drtransferapp.listPatients.view
+package br.ufg.inf.drtransferapp.patient.listPatients.view
 
 import android.os.Bundle
 import android.view.View
@@ -10,12 +10,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.ufg.inf.drtransferapp.R
 import br.ufg.inf.drtransferapp.databinding.ActivityHomeBinding
-import br.ufg.inf.drtransferapp.listPatients.model.PatientResponseModel
-import br.ufg.inf.drtransferapp.listPatients.view.adapter.ListPatientsAdapter
-import br.ufg.inf.drtransferapp.listPatients.viewmodel.PatientStates
-import br.ufg.inf.drtransferapp.listPatients.viewmodel.PatientFactory
-import br.ufg.inf.drtransferapp.listPatients.viewmodel.PatientInterpreter
-import br.ufg.inf.drtransferapp.listPatients.viewmodel.PatientVM
+import br.ufg.inf.drtransferapp.patient.listPatients.model.PatientResponseModel
+import br.ufg.inf.drtransferapp.patient.listPatients.view.adapter.ListPatientsAdapter
+import br.ufg.inf.drtransferapp.patient.listPatients.viewmodel.PatientStates
+import br.ufg.inf.drtransferapp.patient.listPatients.viewmodel.PatientFactory
+import br.ufg.inf.drtransferapp.patient.listPatients.viewmodel.PatientInterpreter
+import br.ufg.inf.drtransferapp.patient.listPatients.viewmodel.PatientVM
 
 class ListPatientActivity : AppCompatActivity() {
 
