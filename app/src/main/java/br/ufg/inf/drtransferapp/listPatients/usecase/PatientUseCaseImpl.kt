@@ -1,9 +1,9 @@
-package br.ufg.inf.drtransferapp.home.usecase
+package br.ufg.inf.drtransferapp.listPatients.usecase
 
-import br.ufg.inf.drtransferapp.home.model.PatientRequestModel
-import br.ufg.inf.drtransferapp.home.repository.PatientRepository
+import br.ufg.inf.drtransferapp.listPatients.model.PatientRequestModel
+import br.ufg.inf.drtransferapp.listPatients.repository.PatientRepository
 import br.ufg.inf.drtransferapp.utils.extension.orElse
-import br.ufg.inf.drtransferapp.home.viewmodel.PatientStates
+import br.ufg.inf.drtransferapp.listPatients.viewmodel.PatientStates
 
 class PatientUseCaseImpl(private val repository: PatientRepository): PatientUseCase {
     override suspend fun listAllPatients(): PatientStates {

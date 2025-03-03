@@ -1,6 +1,6 @@
-package br.ufg.inf.drtransferapp.home.viewmodel
+package br.ufg.inf.drtransferapp.listPatients.viewmodel
 
-import br.ufg.inf.drtransferapp.home.model.PatientRequestModel
+import br.ufg.inf.drtransferapp.listPatients.model.PatientRequestModel
 
 sealed class PatientInterpreter {
     object CallLoading : PatientInterpreter()

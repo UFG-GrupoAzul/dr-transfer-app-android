@@ -1,9 +1,7 @@
-package br.ufg.inf.drtransferapp.home.repository
+package br.ufg.inf.drtransferapp.listPatients.repository
 
-import androidx.lifecycle.LiveData
-import br.ufg.inf.drtransferapp.home.model.PatientRequestModel
-import br.ufg.inf.drtransferapp.home.model.PatientResponseModel
-import okhttp3.Response
+import br.ufg.inf.drtransferapp.listPatients.model.PatientRequestModel
+import br.ufg.inf.drtransferapp.listPatients.model.PatientResponseModel
 
 interface PatientRepository {
     /*Aqui estão todos os métoddos que serão implementados na classe PatientRepositoryImpl.

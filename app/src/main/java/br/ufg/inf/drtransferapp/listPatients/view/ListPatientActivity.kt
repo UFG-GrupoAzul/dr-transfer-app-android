@@ -1,4 +1,4 @@
-package br.ufg.inf.drtransferapp.home.view
+package br.ufg.inf.drtransferapp.listPatients.view
 
 import android.os.Bundle
 import android.view.View
@@ -10,14 +10,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.ufg.inf.drtransferapp.R
 import br.ufg.inf.drtransferapp.databinding.ActivityHomeBinding
-import br.ufg.inf.drtransferapp.home.model.PatientResponseModel
-import br.ufg.inf.drtransferapp.home.view.adapter.ListPatientsAdapter
-import br.ufg.inf.drtransferapp.home.viewmodel.PatientStates
-import br.ufg.inf.drtransferapp.home.viewmodel.PatientFactory
-import br.ufg.inf.drtransferapp.home.viewmodel.PatientInterpreter
-import br.ufg.inf.drtransferapp.home.viewmodel.PatientVM
+import br.ufg.inf.drtransferapp.listPatients.model.PatientResponseModel
+import br.ufg.inf.drtransferapp.listPatients.view.adapter.ListPatientsAdapter
+import br.ufg.inf.drtransferapp.listPatients.viewmodel.PatientStates
+import br.ufg.inf.drtransferapp.listPatients.viewmodel.PatientFactory
+import br.ufg.inf.drtransferapp.listPatients.viewmodel.PatientInterpreter
+import br.ufg.inf.drtransferapp.listPatients.viewmodel.PatientVM
 
-class HomeActivity : AppCompatActivity() {
+class ListPatientActivity : AppCompatActivity() {
 
     private val binding : ActivityHomeBinding by lazy { ActivityHomeBinding.inflate(layoutInflater) }
 

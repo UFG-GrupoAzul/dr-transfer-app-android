@@ -1,6 +1,5 @@
-package br.ufg.inf.drtransferapp.home.view.adapter
+package br.ufg.inf.drtransferapp.listPatients.view.adapter
 
-import android.provider.ContactsContract.CommonDataKinds.Im
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.ufg.inf.drtransferapp.R
-import br.ufg.inf.drtransferapp.databinding.ItemPatientBinding
-import br.ufg.inf.drtransferapp.home.model.PatientResponseModel
+import br.ufg.inf.drtransferapp.listPatients.model.PatientResponseModel
 import br.ufg.inf.drtransferapp.utils.extension.calculateAgeFromISODate
 
 class ListPatientsAdapter(

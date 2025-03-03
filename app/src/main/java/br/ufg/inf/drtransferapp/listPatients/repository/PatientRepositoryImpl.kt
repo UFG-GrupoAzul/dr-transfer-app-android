@@ -1,8 +1,8 @@
-package br.ufg.inf.drtransferapp.home.repository
+package br.ufg.inf.drtransferapp.listPatients.repository
 
-import br.ufg.inf.drtransferapp.home.api.PatientApiServices
-import br.ufg.inf.drtransferapp.home.model.PatientRequestModel
-import br.ufg.inf.drtransferapp.home.model.PatientResponseModel
+import br.ufg.inf.drtransferapp.listPatients.api.PatientApiServices
+import br.ufg.inf.drtransferapp.listPatients.model.PatientRequestModel
+import br.ufg.inf.drtransferapp.listPatients.model.PatientResponseModel
 import br.ufg.inf.drtransferapp.utils.extension.orElse
 
 class PatientRepositoryImpl(private val apiServices: PatientApiServices) : PatientRepository {
