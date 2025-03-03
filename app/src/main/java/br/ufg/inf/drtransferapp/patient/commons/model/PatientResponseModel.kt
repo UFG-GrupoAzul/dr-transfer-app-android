@@ -21,6 +21,6 @@ data class Person(
     @SerializedName("cpf") val cpf: String,
     @SerializedName("dType") val dType: String,
     @SerializedName("phone") val phone: String,
-    @SerializedName("userId") val userId: String,
+    @SerializedName("userId") val userId: String?,
     @SerializedName("gender") val gender: String
 ) : Parcelable

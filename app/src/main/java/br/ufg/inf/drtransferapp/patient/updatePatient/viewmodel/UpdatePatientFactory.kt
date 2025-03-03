@@ -3,15 +3,15 @@ package br.ufg.inf.drtransferapp.patient.updatePatient.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import br.ufg.inf.drtransferapp.network.client.RetrofitClient
-import br.ufg.inf.drtransferapp.patient.listPatients.repository.PatientRepositoryImpl
-import br.ufg.inf.drtransferapp.patient.listPatients.usecase.PatientUseCaseImpl
 import br.ufg.inf.drtransferapp.patient.listPatients.viewmodel.PatientVM
+import br.ufg.inf.drtransferapp.patient.updatePatient.repository.UpdatePatientRepositoryImpl
+import br.ufg.inf.drtransferapp.patient.updatePatient.usecase.UpdatePatientUseCaseImpl
 
 class UpdatePatientFactory : ViewModelProvider.Factory {
     override fun <T: ViewModel> create(modelClass: Class<T>) : T {
         val service = RetrofitClient().createService()
-        val repository = PatientRepositoryImpl(service)
-        val useCase = PatientUseCaseImpl(repository)
-        return PatientVM(useCase) as T
+        val repository = UpdatePatientRepositoryImpl(service)
+        val useCase = UpdatePatientUseCaseImpl(repository)
+        return UpdatePatientVM(useCase) as T
     }
 }

@@ -18,6 +18,7 @@ import br.ufg.inf.drtransferapp.patient.listPatients.viewmodel.PatientFactory
 import br.ufg.inf.drtransferapp.patient.listPatients.viewmodel.PatientInterpreter
 import br.ufg.inf.drtransferapp.patient.listPatients.viewmodel.PatientVM
 import br.ufg.inf.drtransferapp.patient.registerNewPatient.view.RegisterNewPatientActivity
+import br.ufg.inf.drtransferapp.patient.updatePatient.view.UpdatePatientActivity
 
 class ListPatientActivity : AppCompatActivity() {
 
@@ -28,7 +29,7 @@ class ListPatientActivity : AppCompatActivity() {
     private val patientAdapter by lazy {
         ListPatientsAdapter(
             onClickEdit = {
-                // TODO: chamar a tela de edição do paciente
+                startActivity(UpdatePatientActivity.newInstance(this, it))
             },
             onClickDelete = { patient ->
                 viewModel.interpret(PatientInterpreter.CallDeletePatientApi(patient.id))
@@ -72,8 +73,7 @@ class ListPatientActivity : AppCompatActivity() {
                 }
                 is PatientStates.OnSuccessListPatients -> {
                     binding.tvEmptyList.visibility = View.GONE
-                    patientList = it.patients
-                    patientAdapter.updateList(patientList)
+                    patientAdapter.updateList(it.patients)
                     hideShimmer()
                 }
                 is PatientStates.OnSuccessDeletePatient -> {
