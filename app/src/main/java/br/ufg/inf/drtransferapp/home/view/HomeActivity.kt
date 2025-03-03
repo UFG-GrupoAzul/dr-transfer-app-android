@@ -1,14 +1,17 @@
 package br.ufg.inf.drtransferapp.home.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.ufg.inf.drtransferapp.R
 import br.ufg.inf.drtransferapp.databinding.ActivityHomeBinding
 import br.ufg.inf.drtransferapp.home.model.PatientResponseModel
+import br.ufg.inf.drtransferapp.home.view.adapter.ListPatientsAdapter
 import br.ufg.inf.drtransferapp.home.viewmodel.PatientStates
 import br.ufg.inf.drtransferapp.home.viewmodel.PatientFactory
 import br.ufg.inf.drtransferapp.home.viewmodel.PatientInterpreter
@@ -19,6 +22,17 @@ class HomeActivity : AppCompatActivity() {
     private val binding : ActivityHomeBinding by lazy { ActivityHomeBinding.inflate(layoutInflater) }
 
     private lateinit var patientList: List<PatientResponseModel>
+
+    private val patientAdapter by lazy {
+        ListPatientsAdapter(
+            onClickEdit = {
+                // TODO: chamar a tela de edição do paciente
+            },
+            onClickDelete = { patient ->
+                viewModel.interpret(PatientInterpreter.CallDeletePatientApi(patient.id))
+            }
+        )
+    }
 
     private val viewModel: PatientVM by lazy {
         ViewModelProvider(this, PatientFactory()).get(
@@ -54,8 +68,14 @@ class HomeActivity : AppCompatActivity() {
                     showShimmer()
                 }
                 is PatientStates.OnSuccessListPatients -> {
+                    binding.tvEmptyList.visibility = View.GONE
                     patientList = it.patients
+                    patientAdapter.updateList(patientList)
                     hideShimmer()
+                }
+                is PatientStates.OnSuccessDeletePatient -> {
+                    showShimmer()
+                    viewModel.interpret(PatientInterpreter.CallListPatientsApi)
                 }
                 else -> {}
             }
@@ -71,6 +91,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        // TODO: inicializar o RecyclerView com os dados da lista de pacientes
+        binding.rvPatients.layoutManager = LinearLayoutManager(this)
+        binding.rvPatients.setHasFixedSize(true)
+        binding.rvPatients.adapter = patientAdapter
     }
 }
