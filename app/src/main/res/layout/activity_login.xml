@@ -12,10 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
-        android:text="Dr Transfer"
-        android:textSize="44sp"
-        android:textColor="@color/white"
         android:fontFamily="@font/yrsa_semibold"
+        android:text="Dr Transfer"
+        android:textColor="@color/white"
+        android:textSize="44sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,16 +52,17 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/yrsa"
-                android:hint="Senha" />
+                android:hint="Senha"
+                android:inputType="textPassword" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btn_logar"
             android:layout_width="wrap_content"
-            android:fontFamily="@font/yrsa_semibold"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="12dp"
+            android:fontFamily="@font/yrsa_semibold"
             android:text="Logar" />
 
     </androidx.cardview.widget.CardView>
