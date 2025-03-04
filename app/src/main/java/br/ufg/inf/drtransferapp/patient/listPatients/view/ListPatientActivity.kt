@@ -22,6 +22,10 @@ import br.ufg.inf.drtransferapp.patient.listPatients.viewmodel.PatientInterprete
 import br.ufg.inf.drtransferapp.patient.listPatients.viewmodel.PatientVM
 import br.ufg.inf.drtransferapp.patient.registerNewPatient.view.RegisterNewPatientActivity
 import br.ufg.inf.drtransferapp.patient.updatePatient.view.UpdatePatientActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class ListPatientActivity : AppCompatActivity() {
 
@@ -60,34 +64,46 @@ class ListPatientActivity : AppCompatActivity() {
             insets
         }
 
-        viewModel.interpret(PatientInterpreter.CallLoading)
-
         initRecyclerView()
         setClickListener()
         initObserver()
     }
 
-    override fun onStart() {
-        super.onStart()
-        viewModel.interpret(PatientInterpreter.CallListPatientsApi)
+//    override fun onStart() {
+//        super.onStart()
+//        viewModel.interpret(PatientInterpreter.CallListPatientsApi)
+//    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.interpret(PatientInterpreter.CallLoading)
     }
 
     private fun initObserver() {
         viewModel.patient.observe(this) {
             when (it) {
                 is PatientStates.OnLoading -> {
-                    showShimmer()
+                    CoroutineScope(Dispatchers.Main).launch {
+                        showShimmer()
+                        delay(3000)
+                        viewModel.interpret(PatientInterpreter.CallListPatientsApi)
+                    }
                 }
 
                 is PatientStates.OnSuccessListPatients -> {
-                    binding.tvEmptyList.visibility = View.GONE
-                    patientAdapter.updateList(it.patients)
+                    if (it.patients.isEmpty()) {
+                        binding.rvPatients.visibility = View.GONE
+                        binding.fabAddPatient.visibility = View.GONE
+                        binding.tvEmptyList.visibility = View.VISIBLE
+                    } else {
+                        binding.tvEmptyList.visibility = View.GONE
+                        patientAdapter.updateList(it.patients)
+                    }
                     hideShimmer()
                 }
 
                 is PatientStates.OnSuccessDeletePatient -> {
-                    showShimmer()
-                    viewModel.interpret(PatientInterpreter.CallListPatientsApi)
+                    viewModel.interpret(PatientInterpreter.CallLoading)
                 }
 
                 is PatientStates.OnError -> {
@@ -98,11 +114,17 @@ class ListPatientActivity : AppCompatActivity() {
     }
 
     private fun showShimmer() {
-        // TODO: mostrar a animação do shimmer
+        binding.rvPatients.visibility = View.GONE
+        binding.fabAddPatient.visibility = View.GONE
+        binding.shimmer.visibility = View.VISIBLE
+        binding.shimmer.startShimmer()
     }
 
     private fun hideShimmer() {
-        // TODO: ocultar a animação do shimmer
+        binding.shimmer.stopShimmer()
+        binding.shimmer.visibility = View.GONE
+        binding.rvPatients.visibility = View.VISIBLE
+        binding.fabAddPatient.visibility = View.VISIBLE
     }
 
     private fun setClickListener() {

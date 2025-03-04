@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import br.ufg.inf.drtransferapp.patient.commons.model.PatientRequestModel
 import br.ufg.inf.drtransferapp.patient.listPatients.usecase.PatientUseCase
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Delay
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class PatientVM(private val useCase: PatientUseCase) : ViewModel() {
@@ -16,7 +18,7 @@ class PatientVM(private val useCase: PatientUseCase) : ViewModel() {
     fun interpret(interpreter: PatientInterpreter) {
         when (interpreter) {
             is PatientInterpreter.CallLoading ->
-                _patient.postValue(PatientStates.OnLoading)
+                callLoadingShimmer()
 
             is PatientInterpreter.CallListPatientsApi ->
                 callUseCaseListAllPatients()
@@ -24,6 +26,10 @@ class PatientVM(private val useCase: PatientUseCase) : ViewModel() {
             is PatientInterpreter.CallDeletePatientApi ->
                 callUseCaseDeletePatient(interpreter.idPatient)
         }
+    }
+
+    private fun callLoadingShimmer() {
+            _patient.postValue(PatientStates.OnLoading)
     }
 
     private fun callUseCaseListAllPatients() {
