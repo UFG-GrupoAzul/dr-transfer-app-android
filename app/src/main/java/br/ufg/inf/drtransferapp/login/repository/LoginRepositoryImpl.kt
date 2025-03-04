@@ -9,7 +9,7 @@ class LoginRepositoryImpl(private val apiService: LoginApiServices) : LoginRepos
     override suspend fun login(loginRequest: LoginRequestModel): Result<LoginResponseModel> {
         val result: Result<LoginResponseModel>
         return try {
-            val response = apiService.login(loginRequest.email, loginRequest.password)
+            val response = apiService.login(loginRequest)
             result = if (response.code() != STATUS_CODE_200) {
                 Result.failure(Throwable(response.message()))
             } else {
