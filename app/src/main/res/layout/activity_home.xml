@@ -26,6 +26,7 @@
         android:id="@+id/fab_add_patient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue"
         android:layout_margin="24dp"
         android:contentDescription="@string/content_description_cadastra_novo_paciente"
         android:src="@drawable/ic_person_add"
