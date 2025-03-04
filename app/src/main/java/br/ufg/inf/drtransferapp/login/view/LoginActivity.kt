@@ -1,6 +1,8 @@
 package br.ufg.inf.drtransferapp.login.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -8,9 +10,13 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import br.ufg.inf.drtransferapp.R
 import br.ufg.inf.drtransferapp.databinding.ActivityLoginBinding
+import br.ufg.inf.drtransferapp.login.model.LoginRequestModel
+import br.ufg.inf.drtransferapp.login.model.LoginResponseModel
 import br.ufg.inf.drtransferapp.login.viewmodel.LoginFactory
+import br.ufg.inf.drtransferapp.login.viewmodel.LoginInterpreter
 import br.ufg.inf.drtransferapp.login.viewmodel.LoginStates
 import br.ufg.inf.drtransferapp.login.viewmodel.LoginVM
+import br.ufg.inf.drtransferapp.patient.listPatients.view.ListPatientActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -25,6 +31,11 @@ class LoginActivity : AppCompatActivity() {
         )[LoginVM::class.java]
     }
 
+    private lateinit var loginResponse: LoginResponseModel
+
+    private var email: String = ""
+    private var password: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -35,17 +46,33 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+        setClickListeners()
         initObserver()
+    }
+
+    private fun setClickListeners() {
+        binding.btnLogar.setOnClickListener {
+            email = binding.etEmail.text.toString()
+            password = binding.etPassword.text.toString()
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            val loginRequest = LoginRequestModel(email = email, password = password)
+            viewModel.interpret(LoginInterpreter.CallLogin(loginRequest))
+        }
     }
 
     private fun initObserver() {
         viewModel.login.observe(this) {
             when (it) {
                 is LoginStates.OnSuccessLogin -> {
-                    // TODO: Chamar lista de pacientes
+                    loginResponse = it.loginResponseModel
+                    startActivity(Intent(this, ListPatientActivity::class.java))
+                    finish()
                 }
                 is LoginStates.OnError -> {
-                    // TODO: Mostrar erro
+                    Toast.makeText(this, it.error.message, Toast.LENGTH_SHORT).show()
                 }
             }
         }
