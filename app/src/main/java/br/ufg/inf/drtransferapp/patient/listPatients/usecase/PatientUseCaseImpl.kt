@@ -25,9 +25,9 @@ class PatientUseCaseImpl(private val repository: PatientRepository): PatientUseC
 
         return if (result.isSuccess) {
             result.getOrNull()?.let {
-                PatientStates.OnSuccessDeletePatient(it)
+                PatientStates.OnSuccessDeletePatient
             }.orElse {
-                PatientStates.OnError(result.exceptionOrNull() ?: Throwable("Erro desconhecido"))
+                PatientStates.OnSuccessDeletePatient
             }
         } else {
             PatientStates.OnError(result.exceptionOrNull() ?: Throwable("Erro desconhecido"))

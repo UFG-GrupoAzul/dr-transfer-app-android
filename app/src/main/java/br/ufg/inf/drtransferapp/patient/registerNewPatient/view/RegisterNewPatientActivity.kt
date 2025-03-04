@@ -1,17 +1,20 @@
 package br.ufg.inf.drtransferapp.patient.registerNewPatient.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.MultiAutoCompleteTextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import br.ufg.inf.drtransferapp.R
 import br.ufg.inf.drtransferapp.databinding.ActivityRegisterNewPatientBinding
+import br.ufg.inf.drtransferapp.erro.ErroGenericoActivity
 import br.ufg.inf.drtransferapp.patient.commons.model.PatientRequestModel
 import br.ufg.inf.drtransferapp.patient.commons.utils.enum.Genero
 import br.ufg.inf.drtransferapp.patient.commons.utils.enum.TipoSanguineo
@@ -78,11 +81,10 @@ class RegisterNewPatientActivity : AppCompatActivity() {
         viewmodel.patient.observe(this) {
             when(it) {
                 is RegisterNewPatientStates.OnSuccess -> {
-                    Toast.makeText(this, "Paciente criado com sucesso", Toast.LENGTH_SHORT).show()
-                    finish()
+                    showAlertSuccess()
                 }
                 is RegisterNewPatientStates.OnError -> {
-                    Toast.makeText(this, it.error.message, Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, ErroGenericoActivity::class.java))
                     finish()
                 }
             }
@@ -100,7 +102,7 @@ class RegisterNewPatientActivity : AppCompatActivity() {
                 || isItemDropdownSelected(autoCompleteGenero,binding.tfGenero) && autoCompleteGenero.text.toString().isBlank()
                 || isItemDropdownSelected(autoCompleteTipoSangue,binding.tfTipoSangue) && autoCompleteTipoSangue.text.toString().isBlank()
             ) {
-                Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
+                showAlertAtention()
             } else {
                 val nome = binding.etNome.text.toString()
                 val dataAniversario = binding.etDataAniversario.text.toString()
@@ -162,5 +164,25 @@ class RegisterNewPatientActivity : AppCompatActivity() {
             "Feminino" -> Genero.FAMALE.toString()
             else -> ""
         }
+    }
+
+    private fun showAlertAtention() {
+        val buildAlertDialog = AlertDialog.Builder(this)
+        buildAlertDialog.setTitle("Atenção!")
+        buildAlertDialog.setMessage("Preencha todos os campos")
+        buildAlertDialog.setPositiveButton("OK") { dialog, _ ->
+            dialog.dismiss()
+        }
+        buildAlertDialog.create().show()
+    }
+
+    private fun showAlertSuccess() {
+        val buildAlertDialog = AlertDialog.Builder(this)
+        buildAlertDialog.setMessage("Paciente criado com sucesso")
+        buildAlertDialog.setPositiveButton("OK") { dialog, _ ->
+            dialog.dismiss()
+            finish()
+        }
+        buildAlertDialog.create().show()
     }
 }

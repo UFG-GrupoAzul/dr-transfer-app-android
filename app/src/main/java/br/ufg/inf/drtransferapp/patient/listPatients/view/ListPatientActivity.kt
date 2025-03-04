@@ -35,18 +35,11 @@ class ListPatientActivity : AppCompatActivity() {
                 startActivity(UpdatePatientActivity.newInstance(this, it))
             },
             onClickDelete = { patient ->
-                val builderAlertDialog = AlertDialog.Builder(this)
-                builderAlertDialog.setTitle("Excluir Paciente")
-                builderAlertDialog.setMessage("Deseja realmente excluir o paciente ${patient.person.name}?")
-                builderAlertDialog.setPositiveButton("Sim") { dialog, _ ->
-                    viewModel.interpret(PatientInterpreter.CallDeletePatientApi(patient.id))
-                    dialog.dismiss()
-                }
-                builderAlertDialog.setNegativeButton("Não") { dialog, _ ->
-                    dialog.dismiss()
-                }
-
-                builderAlertDialog.create().show()
+                showAlertDelete(patient.person.name, callBack = {
+                    if(it) {
+                        viewModel.interpret(PatientInterpreter.CallDeletePatientApi(patient.id))
+                    }
+                })
             }
         )
     }
@@ -122,5 +115,20 @@ class ListPatientActivity : AppCompatActivity() {
         binding.rvPatients.layoutManager = LinearLayoutManager(this)
         binding.rvPatients.setHasFixedSize(true)
         binding.rvPatients.adapter = patientAdapter
+    }
+
+    private fun showAlertDelete(patientName: String, callBack: (Boolean) -> Unit) {
+        val builderAlertDialog = AlertDialog.Builder(this)
+        builderAlertDialog.setTitle("Excluir Paciente")
+        builderAlertDialog.setMessage("Deseja realmente excluir o paciente ${patientName}?")
+        builderAlertDialog.setPositiveButton("Sim") { dialog, _ ->
+            callBack.invoke(true)
+            dialog.dismiss()
+        }
+        builderAlertDialog.setNegativeButton("Não") { dialog, _ ->
+            callBack.invoke(false)
+            dialog.dismiss()
+        }
+        builderAlertDialog.create().show()
     }
 }

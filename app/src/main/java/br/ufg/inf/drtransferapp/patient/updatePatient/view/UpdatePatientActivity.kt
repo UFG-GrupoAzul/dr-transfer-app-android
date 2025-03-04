@@ -7,12 +7,14 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import br.ufg.inf.drtransferapp.R
 import br.ufg.inf.drtransferapp.databinding.ActivityUpdatePatientBinding
+import br.ufg.inf.drtransferapp.erro.ErroGenericoActivity
 import br.ufg.inf.drtransferapp.patient.commons.model.PatientRequestModel
 import br.ufg.inf.drtransferapp.patient.commons.model.PatientResponseModel
 import br.ufg.inf.drtransferapp.patient.updatePatient.viewmodel.UpdatePatientFactory
@@ -63,11 +65,10 @@ class UpdatePatientActivity : AppCompatActivity() {
         viewModel.updatePatient.observe(this) {
             when(it) {
                 is UpdatePatientStates.OnSuccess -> {
-                    Toast.makeText(this, "Paciente atualizado com sucesso", Toast.LENGTH_SHORT).show()
-                    finish()
+                    showAlertSuccess()
                 }
                 is UpdatePatientStates.OnError -> {
-                    Toast.makeText(this, it.error.message, Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, ErroGenericoActivity::class.java))
                     finish()
                 }
             }
@@ -90,6 +91,16 @@ class UpdatePatientActivity : AppCompatActivity() {
             )
             viewModel.intepret(UpdatePatientInterpreter.CallUpdatePatientApi(patient.id, updatePatient))
         }
+    }
+
+    private fun showAlertSuccess() {
+        val buildAlertDialog = AlertDialog.Builder(this)
+        buildAlertDialog.setMessage("Paciente atualizado com sucesso")
+        buildAlertDialog.setPositiveButton("OK") { dialog, _ ->
+            dialog.dismiss()
+            finish()
+        }
+        buildAlertDialog.create().show()
     }
 
     companion object {
