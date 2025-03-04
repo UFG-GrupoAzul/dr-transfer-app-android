@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import br.ufg.inf.drtransferapp.R
 import br.ufg.inf.drtransferapp.patient.commons.model.PatientResponseModel
 import br.ufg.inf.drtransferapp.patient.commons.utils.extension.calculateAgeFromISODate
+import br.ufg.inf.drtransferapp.patient.commons.utils.extension.convertBloodtype
+import br.ufg.inf.drtransferapp.patient.commons.utils.extension.convertGenderType
 
 class ListPatientsAdapter(
     private val onClickEdit: (PatientResponseModel) -> Unit,
@@ -33,8 +35,8 @@ class ListPatientsAdapter(
         holder.nome.text = patient.person.name
         holder.cpf.text = patient.person.cpf
         holder.telefone.text = patient.person.phone
-        holder.tipoSanguineo.text = patient.bloodType
-        holder.genero.text = patient.person.gender
+        holder.tipoSanguineo.text = convertBloodtype(patient.bloodType)
+        holder.genero.text = convertGenderType(patient.person.gender)
         holder.idade.text = patient.birthDate.calculateAgeFromISODate()
         holder.edit.setOnClickListener {
             onClickEdit(patient)

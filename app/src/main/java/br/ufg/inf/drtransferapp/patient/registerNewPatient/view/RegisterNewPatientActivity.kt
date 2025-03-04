@@ -161,7 +161,7 @@ class RegisterNewPatientActivity : AppCompatActivity() {
     private fun fixGender(autoCompleteGenero: String): String {
         return when (autoCompleteGenero) {
             "Masculino" -> Genero.MALE.toString()
-            "Feminino" -> Genero.FAMALE.toString()
+            "Feminino" -> Genero.FEMALE.toString()
             else -> ""
         }
     }
