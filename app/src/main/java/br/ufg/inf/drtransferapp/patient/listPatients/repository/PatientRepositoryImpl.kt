@@ -20,11 +20,11 @@ class PatientRepositoryImpl(private val apiServices: PatientApiServices) : Patie
             val result: Result<Boolean>
             val response = apiServices.deletePatient(idPatient)
             result = if (response.code() != 200 && response.code() != 201) {
-                Result.success(false)
+                Result.failure(Throwable(response.message()))
             } else if (response.code() == 200 || response.code() == 201){
                 Result.success(true)
             } else {
-                Result.success(false)
+                Result.failure(Throwable(response.message()))
             }
             result
         } catch (exception: Throwable) {

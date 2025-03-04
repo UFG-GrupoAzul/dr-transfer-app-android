@@ -3,7 +3,9 @@ package br.ufg.inf.drtransferapp.patient.listPatients.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -11,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.ufg.inf.drtransferapp.R
 import br.ufg.inf.drtransferapp.databinding.ActivityHomeBinding
+import br.ufg.inf.drtransferapp.erro.ErroGenericoActivity
 import br.ufg.inf.drtransferapp.patient.commons.model.PatientResponseModel
 import br.ufg.inf.drtransferapp.patient.listPatients.view.adapter.ListPatientsAdapter
 import br.ufg.inf.drtransferapp.patient.listPatients.viewmodel.PatientStates
@@ -22,7 +25,7 @@ import br.ufg.inf.drtransferapp.patient.updatePatient.view.UpdatePatientActivity
 
 class ListPatientActivity : AppCompatActivity() {
 
-    private val binding : ActivityHomeBinding by lazy { ActivityHomeBinding.inflate(layoutInflater) }
+    private val binding: ActivityHomeBinding by lazy { ActivityHomeBinding.inflate(layoutInflater) }
 
     private lateinit var patientList: List<PatientResponseModel>
 
@@ -32,7 +35,18 @@ class ListPatientActivity : AppCompatActivity() {
                 startActivity(UpdatePatientActivity.newInstance(this, it))
             },
             onClickDelete = { patient ->
-                viewModel.interpret(PatientInterpreter.CallDeletePatientApi(patient.id))
+                val builderAlertDialog = AlertDialog.Builder(this)
+                builderAlertDialog.setTitle("Excluir Paciente")
+                builderAlertDialog.setMessage("Deseja realmente excluir o paciente ${patient.person.name}?")
+                builderAlertDialog.setPositiveButton("Sim") { dialog, _ ->
+                    viewModel.interpret(PatientInterpreter.CallDeletePatientApi(patient.id))
+                    dialog.dismiss()
+                }
+                builderAlertDialog.setNegativeButton("Não") { dialog, _ ->
+                    dialog.dismiss()
+                }
+
+                builderAlertDialog.create().show()
             }
         )
     }
@@ -71,16 +85,21 @@ class ListPatientActivity : AppCompatActivity() {
                 is PatientStates.OnLoading -> {
                     showShimmer()
                 }
+
                 is PatientStates.OnSuccessListPatients -> {
                     binding.tvEmptyList.visibility = View.GONE
                     patientAdapter.updateList(it.patients)
                     hideShimmer()
                 }
+
                 is PatientStates.OnSuccessDeletePatient -> {
                     showShimmer()
                     viewModel.interpret(PatientInterpreter.CallListPatientsApi)
                 }
-                else -> {}
+
+                is PatientStates.OnError -> {
+                    startActivity(Intent(this, ErroGenericoActivity::class.java))
+                }
             }
         }
     }
@@ -89,7 +108,7 @@ class ListPatientActivity : AppCompatActivity() {
         // TODO: mostrar a animação do shimmer
     }
 
-    private fun hideShimmer(){
+    private fun hideShimmer() {
         // TODO: ocultar a animação do shimmer
     }
 

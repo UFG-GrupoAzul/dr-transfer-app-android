@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2196F3"
     tools:context=".login.view.LoginActivity">
 
     <TextView
@@ -12,7 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
         android:text="Dr Transfer"
-        android:textSize="24sp"
+        android:textSize="44sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/yrsa_semibold"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,6 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:fontFamily="@font/yrsa"
                 android:hint="Email" />
 
             <EditText
@@ -47,12 +51,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="24dp"
+                android:fontFamily="@font/yrsa"
                 android:hint="Senha" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btn_logar"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/yrsa_semibold"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="12dp"

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".listPatients.view.ListPatientActivity">
+    tools:context=".patient.listPatients.view.ListPatientActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_patients"
@@ -17,17 +17,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Nenhum paciente cadastrado!"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:visibility="gone" />
+        android:text="@string/message_lista_paciente_vazia"
+        android:textSize="24sp"
+        android:fontFamily="@font/yrsa_semibold"
+        android:visibility="visible" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add_patient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
-        android:contentDescription="Cadastra novo paciente"
+        android:contentDescription="@string/content_description_cadastra_novo_paciente"
         android:src="@drawable/ic_person_add"
         app:layout_anchor="@id/rv_patients"
         app:layout_anchorGravity="bottom|end" />

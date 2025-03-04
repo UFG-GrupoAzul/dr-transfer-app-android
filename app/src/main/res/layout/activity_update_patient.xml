@@ -27,7 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
-            android:text="Atualizar Daddos do Paciente"
+            android:fontFamily="@font/yrsa_semibold"
+            android:text="@string/titulo_atualizar_daddos_do_paciente"
             android:textSize="24sp" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -44,7 +45,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="100dp"
-            android:hint="Nome" />
+            android:fontFamily="@font/yrsa"
+            android:hint="@string/hint_nome" />
 
         <EditText
             android:id="@+id/et_telefone"
@@ -52,7 +54,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="50dp"
-            android:hint="Telefone" />
+            android:fontFamily="@font/yrsa"
+            android:hint="@string/hint_telefone" />
     </LinearLayout>
 
     <Button
@@ -62,6 +65,7 @@
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginTop="62dp"
         android:layout_marginBottom="24dp"
-        android:text="Confirmar" />
+        android:fontFamily="@font/yrsa_semibold"
+        android:text="@string/label_confirmar" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

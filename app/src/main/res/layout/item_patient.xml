@@ -10,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
+        android:fontFamily="@font/yrsa_semibold"
         android:text="Paciente:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -19,6 +20,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
+        android:fontFamily="@font/yrsa"
         app:layout_constraintBottom_toBottomOf="@+id/tv_name"
         app:layout_constraintStart_toEndOf="@id/tv_name"
         app:layout_constraintTop_toTopOf="@id/tv_name"
@@ -28,7 +30,9 @@
         android:id="@+id/tv_cpf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/yrsa_semibold"
         android:text="CPF:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_name" />
@@ -38,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
+        android:fontFamily="@font/yrsa"
         app:layout_constraintBottom_toBottomOf="@+id/tv_cpf"
         app:layout_constraintStart_toEndOf="@id/tv_cpf"
         app:layout_constraintTop_toTopOf="@id/tv_cpf"
@@ -47,7 +52,9 @@
         android:id="@+id/tv_telefone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/yrsa_semibold"
         android:text="Telefone:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_cpf" />
@@ -57,6 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
+        android:fontFamily="@font/yrsa"
         app:layout_constraintBottom_toBottomOf="@+id/tv_telefone"
         app:layout_constraintStart_toEndOf="@id/tv_telefone"
         app:layout_constraintTop_toTopOf="@id/tv_telefone"
@@ -66,7 +74,9 @@
         android:id="@+id/tv_tipo_sangue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/yrsa_semibold"
         android:text="Tipo Sanguíneo:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_telefone" />
@@ -76,17 +86,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
+        android:fontFamily="@font/yrsa"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_tipo_sangue"
         app:layout_constraintStart_toEndOf="@id/tv_tipo_sangue"
         app:layout_constraintTop_toTopOf="@id/tv_tipo_sangue"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_tipo_sangue"
         tools:text="A-POSITIVO" />
 
     <TextView
         android:id="@+id/tv_genero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        android:text="Gênero"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/yrsa_semibold"
+        android:text="Gênero:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_tipo_sangue" />
 
@@ -95,6 +108,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
+        android:fontFamily="@font/yrsa"
+
         app:layout_constraintBottom_toBottomOf="@+id/tv_genero"
         app:layout_constraintStart_toEndOf="@id/tv_genero"
         app:layout_constraintTop_toTopOf="@id/tv_genero"
@@ -104,7 +119,9 @@
         android:id="@+id/tv_idade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/yrsa_semibold"
         android:text="Idade:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_genero" />
@@ -114,6 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
+        android:fontFamily="@font/yrsa"
         app:layout_constraintBottom_toBottomOf="@+id/tv_idade"
         app:layout_constraintStart_toEndOf="@id/tv_idade"
         app:layout_constraintTop_toTopOf="@id/tv_idade"
@@ -125,8 +143,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginStart="16dp"
         android:src="@drawable/ic_editar"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_name_conteudo"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -136,7 +155,7 @@
         android:layout_marginEnd="24dp"
         android:src="@drawable/ic_deletar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_telefone_conteudo" />
+        app:layout_constraintTop_toTopOf="@id/iv_edit" />
 
     <View
         android:id="@+id/view_bar_divider"

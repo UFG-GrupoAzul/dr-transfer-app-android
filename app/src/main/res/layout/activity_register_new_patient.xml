@@ -27,7 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
-            android:text="Adicionar Novo Paciente"
+            android:fontFamily="@font/yrsa_semibold"
+            android:text="@string/titulo_adicionar_novo_paciente"
             android:textSize="24sp" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -51,7 +52,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="100dp"
-                android:hint="Nome" />
+                android:fontFamily="@font/yrsa"
+                android:hint="@string/hint_nome" />
 
             <EditText
                 android:id="@+id/et_cpf"
@@ -59,7 +61,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="50dp"
-                android:hint="CPF"
+                android:fontFamily="@font/yrsa"
+                android:hint="@string/hint_cpf"
                 android:inputType="number" />
 
             <EditText
@@ -68,7 +71,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="50dp"
-                android:hint="Data de Nascimento" />
+                android:fontFamily="@font/yrsa"
+                android:hint="@string/hint_data_de_nascimento" />
 
             <EditText
                 android:id="@+id/et_telefone"
@@ -76,7 +80,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="50dp"
-                android:hint="Telefone" />
+                android:fontFamily="@font/yrsa"
+                android:hint="@string/hint_telefone" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tf_tipo_sangue"
@@ -84,8 +89,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="50dp"
+                android:hint="@string/hint_tipo_sanguineo"
                 android:paddingStart="4dp"
-                android:hint="Tipo Sanguineo"
                 android:textColorHint="#B9B6B6">
 
                 <AutoCompleteTextView
@@ -94,6 +99,7 @@
                     android:layout_height="26dp"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
+                    android:fontFamily="@font/yrsa"
                     android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,8 +109,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="50dp"
+                android:hint="@string/hint_genero"
                 android:paddingStart="4dp"
-                android:hint="Genero"
                 android:textColorHint="#B9B6B6">
 
                 <AutoCompleteTextView
@@ -113,6 +119,7 @@
                     android:layout_height="26dp"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
+                    android:fontFamily="@font/yrsa"
                     android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -123,7 +130,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="62dp"
                 android:layout_marginBottom="24dp"
-                android:text="Confirmar" />
+                android:fontFamily="@font/yrsa"
+                android:text="@string/label_confirmar" />
         </LinearLayout>
     </ScrollView>
 
