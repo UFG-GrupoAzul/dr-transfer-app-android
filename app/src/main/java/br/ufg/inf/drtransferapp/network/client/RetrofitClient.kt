@@ -8,8 +8,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RetrofitClient {
 
     /* Neste métoddo nós criamos uma instância do Retrofit e retornamos ela dizendo que ela será criada a partir da interface PatientApiServices. */
-    fun createService(): PatientApiServices {
-        return getRetrofitInstance().create(PatientApiServices::class.java)
+//    fun createService(): PatientApiServices {
+//        return getRetrofitInstance().create(PatientApiServices::class.java)
+//    }
+
+    fun <T> createService(serviceClass: Class<T>): T {
+        return getRetrofitInstance().create(serviceClass)
     }
 
     companion object {
