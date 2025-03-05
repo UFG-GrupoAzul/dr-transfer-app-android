@@ -98,8 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="50dp"
-                android:hint="@string/hint_tipo_sanguineo"
-                android:textColorHint="#B9B6B6">
+                android:hint="@string/hint_tipo_sanguineo">
 
                 <AutoCompleteTextView
                     android:id="@+id/auto_complete_tipo_sangue"
@@ -118,8 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="50dp"
-                android:hint="@string/hint_genero"
-                android:textColorHint="#B9B6B6">
+                android:hint="@string/hint_genero">
 
                 <AutoCompleteTextView
                     android:id="@+id/auto_complete_genero"
