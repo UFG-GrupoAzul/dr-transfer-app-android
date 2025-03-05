@@ -59,14 +59,14 @@ class RegisterNewPatientActivity : AppCompatActivity() {
     private fun iniViews() {
         autoCompleteTipoSangue = binding.autoCompleteTipoSangue
         val options= listOf(
-            "A-Positivo",
-            "A-Negativo",
-            "B-Positivo",
-            "B-Negativo",
-            "AB-Positivo",
-            "AB-Negativo",
-            "O-Positivo",
-            "O-Negativo"
+            "A+",
+            "A-",
+            "B+",
+            "B-",
+            "AB+",
+            "AB-",
+            "O+",
+            "O-"
         )
         val adpater = ArrayAdapter(this, android.R.layout.simple_list_item_1, options)
         autoCompleteTipoSangue.setAdapter(adpater)
