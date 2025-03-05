@@ -59,6 +59,7 @@ class UpdatePatientActivity : AppCompatActivity() {
     private fun iniViews() {
         binding.etNome.setText(patient.person.name)
         binding.etTelefone.setText(patient.person.phone)
+        binding.tbAppBar.toolBar.title = "Atualizar Dados do Paciente"
     }
 
     private fun initObserver() {
@@ -76,7 +77,7 @@ class UpdatePatientActivity : AppCompatActivity() {
     }
 
     private fun setClickListener() {
-        binding.ivBack.setOnClickListener {
+        binding.tbAppBar.toolBar.setNavigationOnClickListener {
             finish()
         }
 

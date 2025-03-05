@@ -7,11 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".patient.listPatients.view.ListPatientActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp">
+
+        <include
+            android:id="@+id/tb_app_bar"
+            layout="@layout/tool_bar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="24dp">
+        android:layout_marginTop="88dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,9 +30,13 @@
             android:orientation="vertical">
 
             <include layout="@layout/placeholder_patient_item" />
+
             <include layout="@layout/placeholder_patient_item" />
+
             <include layout="@layout/placeholder_patient_item" />
+
             <include layout="@layout/placeholder_patient_item" />
+
             <include layout="@layout/placeholder_patient_item" />
 
         </LinearLayout>
@@ -32,6 +47,7 @@
         android:id="@+id/rv_patients"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="88dp"
         android:visibility="gone" />
 
     <TextView

@@ -75,6 +75,8 @@ class RegisterNewPatientActivity : AppCompatActivity() {
         val optionsGenero = listOf("Masculino", "Feminino")
         val adpaterGenero = ArrayAdapter(this, android.R.layout.simple_list_item_1, optionsGenero)
         autoCompleteGenero.setAdapter(adpaterGenero)
+
+        binding.tbAppBar.toolBar.title = "Adicionar Novo Paciente"
     }
 
     private fun initObserver() {
@@ -92,7 +94,7 @@ class RegisterNewPatientActivity : AppCompatActivity() {
     }
 
     private fun setClickListener() {
-        binding.ivBack.setOnClickListener {
+        binding.tbAppBar.toolBar.setNavigationOnClickListener {
             finish()
         }
 

@@ -64,6 +64,7 @@ class ListPatientActivity : AppCompatActivity() {
             insets
         }
 
+        initView()
         initRecyclerView()
         setClickListener()
         initObserver()
@@ -77,6 +78,10 @@ class ListPatientActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         viewModel.interpret(PatientInterpreter.CallLoading)
+    }
+
+    private fun initView() {
+        binding.tbAppBar.toolBar.title = "Pacientes"
     }
 
     private fun initObserver() {

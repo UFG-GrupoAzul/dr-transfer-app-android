@@ -8,28 +8,13 @@
     tools:context=".patient.registerNewPatient.view.RegisterNewPatientActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="4dp">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/iv_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:src="@drawable/ic_arrow_back" />
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/yrsa_semibold"
-            android:text="@string/titulo_adicionar_novo_paciente"
-            android:textSize="24sp" />
+        <include
+            android:id="@+id/tb_app_bar"
+            layout="@layout/tool_bar" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -46,42 +31,66 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/et_nome"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="100dp"
-                android:fontFamily="@font/yrsa"
-                android:hint="@string/hint_nome" />
+                android:layout_marginTop="60dp"
+                android:hint="@string/hint_nome">
 
-            <EditText
-                android:id="@+id/et_cpf"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="50dp"
-                android:fontFamily="@font/yrsa"
-                android:hint="@string/hint_cpf"
-                android:inputType="number" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_nome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/yrsa" />
 
-            <EditText
-                android:id="@+id/et_dataAniversario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="50dp"
-                android:fontFamily="@font/yrsa"
-                android:hint="@string/hint_data_de_nascimento" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/et_telefone"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="50dp"
-                android:fontFamily="@font/yrsa"
-                android:hint="@string/hint_telefone" />
+                android:layout_marginTop="40dp"
+                android:hint="@string/hint_cpf">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_cpf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/yrsa"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="40dp"
+                android:hint="@string/hint_data_de_nascimento">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_dataAniversario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/yrsa" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="40dp"
+                android:hint="@string/hint_telefone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_telefone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/yrsa" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tf_tipo_sangue"
@@ -90,17 +99,17 @@
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="50dp"
                 android:hint="@string/hint_tipo_sanguineo"
-                android:paddingStart="4dp"
                 android:textColorHint="#B9B6B6">
 
                 <AutoCompleteTextView
                     android:id="@+id/auto_complete_tipo_sangue"
                     android:layout_width="match_parent"
-                    android:layout_height="26dp"
+                    android:layout_height="50dp"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:fontFamily="@font/yrsa"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    android:paddingStart="12dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -110,17 +119,17 @@
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="50dp"
                 android:hint="@string/hint_genero"
-                android:paddingStart="4dp"
                 android:textColorHint="#B9B6B6">
 
                 <AutoCompleteTextView
                     android:id="@+id/auto_complete_genero"
                     android:layout_width="match_parent"
-                    android:layout_height="26dp"
+                    android:layout_height="50dp"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:fontFamily="@font/yrsa"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    android:paddingStart="12dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
