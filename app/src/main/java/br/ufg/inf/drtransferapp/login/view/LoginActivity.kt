@@ -45,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        binding.etEmail.fontFeatureSettings = "@font/yrsa"
+
         setClickListeners()
         initObserver()
     }
@@ -61,6 +61,10 @@ class LoginActivity : AppCompatActivity() {
             val loginRequest = LoginRequestModel(email = email, password = password)
             viewModel.interpret(LoginInterpreter.CallLogin(loginRequest))
         }
+
+        binding.tvCriarConta.setOnClickListener {
+            Toast.makeText(this, "Funcionalidade não implementada.", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun initObserver() {
@@ -72,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
                     finish()
                 }
                 is LoginStates.OnError -> {
-                    Toast.makeText(this, it.error.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Email ou senha inválido!", Toast.LENGTH_SHORT).show()
                 }
             }
         }

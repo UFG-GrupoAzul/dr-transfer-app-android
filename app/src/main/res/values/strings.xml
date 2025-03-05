@@ -1,21 +1,30 @@
 <resources>
     <string name="app_name">Dr Transfer App</string>
+    <string name="app_name_dr_transfer">Dr Transfer</string>
     <string name="mensage_erro">Desculpe, ocorreu um erro inesperado.\nPor favor, tente novamente mais tarde.</string>
 
     <!-- TÍTULO -->
+    <string name="titulo_atualizar_daddos_do_paciente">Atualizar Daddos do Paciente</string>
+    <string name="titulo_adicionar_novo_paciente">Adicionar Novo Paciente</string>
+    <string name="titulo_pacientes">Pacientes</string>
 
-
-    <!-- BOTÃO -->
-    <string name="label_voltar">Voltar</string>
-    <string name="label_confirmar">Confirmar</string>
+    <!-- MENSAGEM  -->
     <string name="message_lista_paciente_vazia">Nenhum paciente cadastrado!</string>
     <string name="content_description_cadastra_novo_paciente">Cadastra novo paciente</string>
-    <string name="titulo_atualizar_daddos_do_paciente">Atualizar Daddos do Paciente</string>
+    <string name="texto_criar_conta">Criar conta</string>
+
+    <!-- HINT -->
     <string name="hint_telefone">Telefone</string>
     <string name="hint_nome">Nome</string>
-    <string name="titulo_adicionar_novo_paciente">Adicionar Novo Paciente</string>
     <string name="hint_cpf">CPF</string>
     <string name="hint_data_de_nascimento">Data de Nascimento</string>
     <string name="hint_tipo_sanguineo">Tipo Sanguineo</string>
     <string name="hint_genero">Genero</string>
+    <string name="hint_senha">Senha</string>
+    <string name="hint_email">Email</string>
+
+    <!-- BOTÃO -->
+    <string name="label_voltar">Voltar</string>
+    <string name="label_confirmar">Confirmar</string>
+    <string name="label_logar">Logar</string>
 </resources>

@@ -81,7 +81,7 @@ class ListPatientActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        binding.tbAppBar.toolBar.title = "Pacientes"
+        binding.tbAppBar.toolBar.title = getString(R.string.titulo_pacientes)
     }
 
     private fun initObserver() {
