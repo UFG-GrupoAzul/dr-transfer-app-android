@@ -38,3 +38,18 @@ fun convertBloodtype(bloodtype: String): String {
         else -> "Não informado"
     }
 }
+
+fun convertBloodtypeReverse(bloodtype: String): String {
+    return when (bloodtype) {
+        "A+" -> TipoSanguineo.A_POSITIVE.toString()
+        "A-" -> TipoSanguineo.A_NEGATIVE.toString()
+        "B+" -> TipoSanguineo.B_POSITIVE.toString()
+        "B-" -> TipoSanguineo.B_NEGATIVE.toString()
+        "AB+" -> TipoSanguineo.AB_POSITIVE.toString()
+        "AB-" -> TipoSanguineo.AB_NEGATIVE.toString()
+        "O+" -> TipoSanguineo.O_POSITIVE.toString()
+        "O-" -> TipoSanguineo.O_NEGATIVE.toString()
+        else -> "Não informado"
+    }
+}
+

@@ -18,6 +18,7 @@ import br.ufg.inf.drtransferapp.erro.ErroGenericoActivity
 import br.ufg.inf.drtransferapp.patient.commons.model.PatientRequestModel
 import br.ufg.inf.drtransferapp.patient.commons.utils.enum.Genero
 import br.ufg.inf.drtransferapp.patient.commons.utils.enum.TipoSanguineo
+import br.ufg.inf.drtransferapp.patient.commons.utils.extension.convertBloodtypeReverse
 import br.ufg.inf.drtransferapp.patient.registerNewPatient.viewmodel.RegisterNewPatientFactory
 import br.ufg.inf.drtransferapp.patient.registerNewPatient.viewmodel.RegisterNewPatientInterpreter
 import br.ufg.inf.drtransferapp.patient.registerNewPatient.viewmodel.RegisterNewPatientStates
@@ -111,7 +112,7 @@ class RegisterNewPatientActivity : AppCompatActivity() {
                 val telefone = binding.etTelefone.text.toString()
                 val cpf = binding.etCpf.text.toString()
                 val genero = fixGender(binding.autoCompleteGenero.text.toString())
-                val tipoSangue = fixBloodType(binding.autoCompleteTipoSangue.text.toString())
+                val tipoSangue = convertBloodtypeReverse(binding.autoCompleteTipoSangue.text.toString())
 
                 val patient =
                     PatientRequestModel(
@@ -143,20 +144,6 @@ class RegisterNewPatientActivity : AppCompatActivity() {
         } else {
             textInputLayout.error = null
             false
-        }
-    }
-
-    private fun fixBloodType(autoCompleteTipoSangue: String) : String {
-        return when (autoCompleteTipoSangue) {
-            "A-Positivo" -> TipoSanguineo.A_POSITIVE.toString()
-            "A-Negativo" -> TipoSanguineo.A_NEGATIVE.toString()
-            "B-Positivo" -> TipoSanguineo.B_POSITIVE.toString()
-            "B-Negativo" -> TipoSanguineo.B_NEGATIVE.toString()
-            "AB-Positivo" -> TipoSanguineo.AB_POSITIVE.toString()
-            "AB-Negativo" -> TipoSanguineo.AB_NEGATIVE.toString()
-            "O-Positivo" -> TipoSanguineo.O_POSITIVE.toString()
-            "O-Negativo" -> TipoSanguineo.O_NEGATIVE.toString()
-            else -> ""
         }
     }
 
