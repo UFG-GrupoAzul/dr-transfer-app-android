@@ -18,7 +18,8 @@ import br.ufg.inf.drtransferapp.erro.ErroGenericoActivity
 import br.ufg.inf.drtransferapp.patient.commons.model.PatientRequestModel
 import br.ufg.inf.drtransferapp.patient.commons.utils.enum.Genero
 import br.ufg.inf.drtransferapp.patient.commons.utils.enum.TipoSanguineo
-import br.ufg.inf.drtransferapp.patient.commons.utils.extension.convertBloodtypeReverse
+import br.ufg.inf.drtransferapp.patient.commons.utils.convertBloodtypeReverse
+import br.ufg.inf.drtransferapp.patient.commons.utils.format.FormatCpf
 import br.ufg.inf.drtransferapp.patient.registerNewPatient.viewmodel.RegisterNewPatientFactory
 import br.ufg.inf.drtransferapp.patient.registerNewPatient.viewmodel.RegisterNewPatientInterpreter
 import br.ufg.inf.drtransferapp.patient.registerNewPatient.viewmodel.RegisterNewPatientStates
@@ -110,7 +111,7 @@ class RegisterNewPatientActivity : AppCompatActivity() {
                 val nome = binding.etNome.text.toString()
                 val dataAniversario = binding.etDataAniversario.text.toString()
                 val telefone = binding.etTelefone.text.toString()
-                val cpf = binding.etCpf.text.toString()
+                val cpf = validaCpfEFormata(binding.etCpf.text.toString())
                 val genero = fixGender(binding.autoCompleteGenero.text.toString())
                 val tipoSangue = convertBloodtypeReverse(binding.autoCompleteTipoSangue.text.toString())
 
@@ -124,7 +125,11 @@ class RegisterNewPatientActivity : AppCompatActivity() {
                         tipoSanguineo = tipoSangue
                     )
 
-                viewmodel.interpret(RegisterNewPatientInterpreter.CallCreatePatientApi(patient))
+                if (patient.cpf.isBlank()) {
+                    Toast.makeText(this, "CPF inválido", Toast.LENGTH_SHORT).show()
+                } else {
+                    viewmodel.interpret(RegisterNewPatientInterpreter.CallCreatePatientApi(patient))
+                }
             }
         }
 
@@ -173,5 +178,13 @@ class RegisterNewPatientActivity : AppCompatActivity() {
             finish()
         }
         buildAlertDialog.create().show()
+    }
+
+    private fun validaCpfEFormata(cpf: String): String {
+        return if (cpf.length == 11) {
+            FormatCpf.formataCpf(cpf)
+        } else {
+            ""
+        }
     }
 }

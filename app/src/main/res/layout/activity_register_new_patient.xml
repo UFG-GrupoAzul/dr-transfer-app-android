@@ -42,7 +42,8 @@
                     android:id="@+id/et_nome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/yrsa" />
+                    android:fontFamily="@font/yrsa"
+                    android:inputType="textPersonName"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,7 +74,8 @@
                     android:id="@+id/et_dataAniversario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/yrsa" />
+                    android:fontFamily="@font/yrsa"
+                    android:inputType="date"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,7 +90,8 @@
                     android:id="@+id/et_telefone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/yrsa" />
+                    android:fontFamily="@font/yrsa"
+                    android:inputType="number"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 

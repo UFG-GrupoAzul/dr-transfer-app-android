@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import br.ufg.inf.drtransferapp.R
 import br.ufg.inf.drtransferapp.patient.commons.model.PatientResponseModel
 import br.ufg.inf.drtransferapp.patient.commons.utils.extension.calculateAgeFromISODate
-import br.ufg.inf.drtransferapp.patient.commons.utils.extension.convertBloodtype
-import br.ufg.inf.drtransferapp.patient.commons.utils.extension.convertGenderType
+import br.ufg.inf.drtransferapp.patient.commons.utils.convertBloodtype
+import br.ufg.inf.drtransferapp.patient.commons.utils.convertGenderType
 
 class ListPatientsAdapter(
     private val onClickEdit: (PatientResponseModel) -> Unit,
