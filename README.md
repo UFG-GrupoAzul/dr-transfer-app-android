@@ -9,7 +9,7 @@ Sergio Castro Dos Santos Sales Cabral<br/>
 
 # Trabalho final
 
-Consumir via API os dados dos pacientes que estão armazenados no backend criado em disciplinas anteriores, além disso realizar uma autenticação para consumir esses dados.
+Consumir via API os dados dos pacientes que estão armazenados no backend criado em disciplinas anteriores, além disso realizar deverá ser feito uma autenticação antes de consumir esses dados dos pacientes.
 
 # Detalhes do projeto 
 O aplicativo precisa mostrar todos os pacientes que já estão salvos na base de dados, além disso, o aplicativo deverá permitir atualizar, remover ou adicionar um paciente nessa base de dados via chamadas de API. O projeto precisa fazer uso do Retrofit para realizar as chamadas de API.
