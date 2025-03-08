@@ -23,6 +23,9 @@ O aplicativo precisa mostrar todos os pacientes que já estão salvos na base de
 
 ![Image](https://github.com/user-attachments/assets/610c96a0-cf19-4dc7-a507-7430154e91ee)
 
+**Tela criada em Compose**
+![image](https://github.com/user-attachments/assets/b42a2359-ccc9-47aa-8c18-a0283d2f8aa0)
+
 ![Image](https://github.com/user-attachments/assets/1ef8793b-13c1-4c69-be58-9a8252e21f65)
 
 ![Image](https://github.com/user-attachments/assets/72147062-bdf8-412b-8a1c-9cf2f5ce65f0)
