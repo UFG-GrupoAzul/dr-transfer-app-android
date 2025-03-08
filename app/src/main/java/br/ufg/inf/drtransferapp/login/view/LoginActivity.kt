@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import br.ufg.inf.drtransferapp.R
 import br.ufg.inf.drtransferapp.databinding.ActivityLoginBinding
+import br.ufg.inf.drtransferapp.home.ui.HomeDrTransferActivity
 import br.ufg.inf.drtransferapp.login.model.LoginRequestModel
 import br.ufg.inf.drtransferapp.login.model.LoginResponseModel
 import br.ufg.inf.drtransferapp.login.viewmodel.LoginFactory
@@ -72,7 +73,7 @@ class LoginActivity : AppCompatActivity() {
             when (it) {
                 is LoginStates.OnSuccessLogin -> {
                     loginResponse = it.loginResponseModel
-                    startActivity(Intent(this, ListPatientActivity::class.java))
+                    startActivity(Intent(this, HomeDrTransferActivity::class.java))
                     finish()
                 }
                 is LoginStates.OnError -> {

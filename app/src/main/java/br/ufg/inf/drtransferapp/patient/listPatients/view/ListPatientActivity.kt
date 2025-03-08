@@ -136,6 +136,10 @@ class ListPatientActivity : AppCompatActivity() {
         binding.fabAddPatient.setOnClickListener {
             startActivity(Intent(this, RegisterNewPatientActivity::class.java))
         }
+
+        binding.tbAppBar.toolBar.setNavigationOnClickListener {
+            finish()
+        }
     }
 
     private fun initRecyclerView() {
